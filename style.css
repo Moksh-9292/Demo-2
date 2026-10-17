@@ -1,0 +1,1925 @@
+/* ==========================================================================
+   Ben 10 Omnitrix Intergalactic Universe Design System
+   ========================================================================== */
+
+/* 1. THEME DESIGN TOKENS */
+:root,
+[data-theme="omnitrix"] {
+  --theme-name: "Omnitrix Active";
+  --bg-primary: #050a06;
+  --bg-secondary: #09130c;
+  --bg-surface: rgba(12, 24, 15, 0.72);
+  --bg-card: rgba(14, 28, 18, 0.65);
+  --bg-card-hover: rgba(18, 38, 24, 0.85);
+  
+  --border-subtle: rgba(0, 255, 65, 0.12);
+  --border-medium: rgba(0, 255, 65, 0.28);
+  --border-bright: rgba(0, 255, 65, 0.65);
+
+  --text-primary: #f0fdf4;
+  --text-secondary: #a7f3d0;
+  --text-muted: #4ade80;
+  --text-dim: #166534;
+
+  --neon-glow: #00ff41;
+  --neon-secondary: #00e676;
+  --neon-accent: #39ff14;
+  --neon-cyan: #00e5ff;
+  
+  --glow-shadow: rgba(0, 255, 65, 0.35);
+  --glow-ambient: rgba(0, 255, 65, 0.18);
+  --glow-high: rgba(0, 255, 65, 0.75);
+
+  --accent-gradient: linear-gradient(135deg, #00ff41 0%, #10b981 50%, #00b4d8 100%);
+  --banner-gradient: linear-gradient(135deg, #031408 0%, #082914 50%, #051c24 100%);
+  --dial-metallic: linear-gradient(145deg, #18221b, #09110b);
+  --core-glass: radial-gradient(circle at 35% 35%, rgba(0, 255, 65, 0.45) 0%, rgba(3, 15, 7, 0.95) 75%);
+
+  --orb-1: rgba(0, 255, 65, 0.14);
+  --orb-2: rgba(0, 229, 255, 0.1);
+  --hud-bg: rgba(6, 14, 8, 0.82);
+}
+
+/* 2. ALBEDO ULTIMATRIX THEME (CRIMSON RED) */
+[data-theme="albedo"] {
+  --theme-name: "Albedo Negative";
+  --bg-primary: #0a0405;
+  --bg-secondary: #14070a;
+  --bg-surface: rgba(26, 10, 14, 0.72);
+  --bg-card: rgba(30, 11, 16, 0.65);
+  --bg-card-hover: rgba(45, 14, 22, 0.85);
+
+  --border-subtle: rgba(255, 0, 56, 0.15);
+  --border-medium: rgba(255, 0, 56, 0.32);
+  --border-bright: rgba(255, 0, 56, 0.7);
+
+  --text-primary: #fff1f2;
+  --text-secondary: #fecdd3;
+  --text-muted: #fb7185;
+  --text-dim: #9f1239;
+
+  --neon-glow: #ff0038;
+  --neon-secondary: #e11d48;
+  --neon-accent: #ff4d6d;
+  --neon-cyan: #ff758f;
+
+  --glow-shadow: rgba(255, 0, 56, 0.4);
+  --glow-ambient: rgba(255, 0, 56, 0.2);
+  --glow-high: rgba(255, 0, 56, 0.85);
+
+  --accent-gradient: linear-gradient(135deg, #ff0038 0%, #be123c 50%, #7f1d1d 100%);
+  --banner-gradient: linear-gradient(135deg, #1c050a 0%, #350812 50%, #20040b 100%);
+  --dial-metallic: linear-gradient(145deg, #281419, #130609);
+  --core-glass: radial-gradient(circle at 35% 35%, rgba(255, 0, 56, 0.45) 0%, rgba(20, 3, 7, 0.95) 75%);
+
+  --orb-1: rgba(255, 0, 56, 0.16);
+  --orb-2: rgba(225, 29, 72, 0.12);
+  --hud-bg: rgba(14, 5, 7, 0.85);
+}
+
+/* 3. BEN 23 HERO WATCH THEME (ELECTRIC SKY BLUE) */
+[data-theme="ben23"] {
+  --theme-name: "Ben 23 Hero Watch";
+  --bg-primary: #030a12;
+  --bg-secondary: #061324;
+  --bg-surface: rgba(8, 24, 46, 0.72);
+  --bg-card: rgba(10, 28, 54, 0.65);
+  --bg-card-hover: rgba(14, 38, 74, 0.85);
+
+  --border-subtle: rgba(0, 210, 255, 0.15);
+  --border-medium: rgba(0, 210, 255, 0.32);
+  --border-bright: rgba(0, 210, 255, 0.7);
+
+  --text-primary: #f0f9ff;
+  --text-secondary: #bae6fd;
+  --text-muted: #38bdf8;
+  --text-dim: #0369a1;
+
+  --neon-glow: #00d2ff;
+  --neon-secondary: #0284c7;
+  --neon-accent: #38bdf8;
+  --neon-cyan: #7dd3fc;
+
+  --glow-shadow: rgba(0, 210, 255, 0.4);
+  --glow-ambient: rgba(0, 210, 255, 0.2);
+  --glow-high: rgba(0, 210, 255, 0.85);
+
+  --accent-gradient: linear-gradient(135deg, #00d2ff 0%, #0284c7 50%, #4338ca 100%);
+  --banner-gradient: linear-gradient(135deg, #041427 0%, #06284d 50%, #0b153b 100%);
+  --dial-metallic: linear-gradient(145deg, #10243b, #081320);
+  --core-glass: radial-gradient(circle at 35% 35%, rgba(0, 210, 255, 0.45) 0%, rgba(3, 14, 30, 0.95) 75%);
+
+  --orb-1: rgba(0, 210, 255, 0.16);
+  --orb-2: rgba(56, 189, 248, 0.12);
+  --hud-bg: rgba(4, 12, 22, 0.85);
+}
+
+/* 4. DNA SCANNER THEME (AMBER GOLD HAZARD) */
+[data-theme="scan"] {
+  --theme-name: "DNA Scanner Mode";
+  --bg-primary: #0a0802;
+  --bg-secondary: #141005;
+  --bg-surface: rgba(28, 22, 9, 0.72);
+  --bg-card: rgba(34, 26, 10, 0.65);
+  --bg-card-hover: rgba(48, 36, 14, 0.85);
+
+  --border-subtle: rgba(255, 187, 0, 0.16);
+  --border-medium: rgba(255, 187, 0, 0.35);
+  --border-bright: rgba(255, 187, 0, 0.75);
+
+  --text-primary: #fffbeb;
+  --text-secondary: #fef08a;
+  --text-muted: #facc15;
+  --text-dim: #854d0e;
+
+  --neon-glow: #ffbb00;
+  --neon-secondary: #eab308;
+  --neon-accent: #fde047;
+  --neon-cyan: #fbbf24;
+
+  --glow-shadow: rgba(255, 187, 0, 0.4);
+  --glow-ambient: rgba(255, 187, 0, 0.2);
+  --glow-high: rgba(255, 187, 0, 0.85);
+
+  --accent-gradient: linear-gradient(135deg, #ffbb00 0%, #ca8a04 50%, #ea580c 100%);
+  --banner-gradient: linear-gradient(135deg, #1c1304 0%, #382408 50%, #261605 100%);
+  --dial-metallic: linear-gradient(145deg, #2b200e, #130e06);
+  --core-glass: radial-gradient(circle at 35% 35%, rgba(255, 187, 0, 0.45) 0%, rgba(22, 14, 3, 0.95) 75%);
+
+  --orb-1: rgba(255, 187, 0, 0.16);
+  --orb-2: rgba(234, 88, 12, 0.12);
+  --hud-bg: rgba(16, 12, 4, 0.85);
+}
+
+/* 5. AZMUTH GALVAN LAB (HIGH-TECH WHITE / SILVER ALLOY) */
+[data-theme="galvan"] {
+  --theme-name: "Azmuth Galvan Lab";
+  --bg-primary: #f0f7f3;
+  --bg-secondary: #e0eee4;
+  --bg-surface: rgba(255, 255, 255, 0.88);
+  --bg-card: rgba(255, 255, 255, 0.82);
+  --bg-card-hover: rgba(255, 255, 255, 0.96);
+
+  --border-subtle: rgba(5, 150, 105, 0.15);
+  --border-medium: rgba(5, 150, 105, 0.35);
+  --border-bright: rgba(5, 150, 105, 0.7);
+
+  --text-primary: #064e3b;
+  --text-secondary: #047857;
+  --text-muted: #059669;
+  --text-dim: #10b981;
+
+  --neon-glow: #059669;
+  --neon-secondary: #10b981;
+  --neon-accent: #0284c7;
+  --neon-cyan: #06b6d4;
+
+  --glow-shadow: rgba(5, 150, 105, 0.25);
+  --glow-ambient: rgba(5, 150, 105, 0.15);
+  --glow-high: rgba(5, 150, 105, 0.6);
+
+  --accent-gradient: linear-gradient(135deg, #059669 0%, #10b981 50%, #0284c7 100%);
+  --banner-gradient: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 50%, #bae6fd 100%);
+  --dial-metallic: linear-gradient(145deg, #e5e7eb, #d1d5db);
+  --core-glass: radial-gradient(circle at 35% 35%, rgba(16, 185, 129, 0.3) 0%, rgba(240, 253, 244, 0.95) 75%);
+
+  --orb-1: rgba(16, 185, 129, 0.14);
+  --orb-2: rgba(14, 165, 233, 0.12);
+  --hud-bg: rgba(255, 255, 255, 0.88);
+}
+
+/* ==========================================================================
+   Base & Reset Styles
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.6;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Monospace & Futuristic Fonts */
+.brand-title, .status-pill, .section-tag, .nav-link, .holo-tag, .stat-label, 
+.hp-numeric, .btn, .dossier-tag, .meta-label, .filter-chip {
+  font-family: 'Chakra Petch', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.brand-sub, .holo-species, .planet-system, .log-entry, .meta-val, .timeout-timer-badge {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 5.5rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Glowing Neon Text Utility */
+.neon-text {
+  color: var(--neon-glow);
+  text-shadow: 0 0 16px var(--glow-shadow), 0 0 32px var(--glow-ambient);
+}
+
+/* Starfield Canvas Background */
+.starfield-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Hexagon / Grid overlay */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ambient Floating Glowing Orbs */
+.ambient-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+  animation: floatOrb 20s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+  width: 550px;
+  height: 550px;
+  background: var(--orb-1);
+  top: 5%;
+  left: 10%;
+}
+
+.orb-2 {
+  width: 600px;
+  height: 600px;
+  background: var(--orb-2);
+  bottom: 5%;
+  right: 8%;
+  animation-delay: -6s;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, -40px) scale(1.1); }
+  100% { transform: translate(-40px, 50px) scale(0.92); }
+}
+
+/* ==========================================================================
+   HUD Navigation Header
+   ========================================================================== */
+.hud-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--hud-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-medium);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.header-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.hud-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.omnitrix-logo-icon {
+  width: 38px;
+  height: 38px;
+  color: var(--neon-glow);
+  filter: drop-shadow(0 0 8px var(--glow-shadow));
+  transition: transform 0.3s ease;
+}
+
+.hud-brand:hover .omnitrix-logo-icon {
+  transform: rotate(90deg);
+}
+
+.logo-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.brand-title .highlight {
+  color: var(--neon-glow);
+}
+
+.brand-sub {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* Navigation Links */
+.hud-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.nav-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.nav-idx {
+  color: var(--neon-glow);
+  font-size: 0.72rem;
+  margin-right: 0.2rem;
+  opacity: 0.8;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--text-primary);
+  background: var(--bg-card);
+  text-shadow: 0 0 8px var(--glow-shadow);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 20%;
+  width: 60%;
+  height: 2px;
+  background: var(--neon-glow);
+  box-shadow: 0 0 8px var(--neon-glow);
+}
+
+/* Header Controls */
+.hud-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.control-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.control-btn:hover {
+  border-color: var(--neon-glow);
+  box-shadow: 0 0 12px var(--glow-shadow);
+  transform: translateY(-1px);
+}
+
+/* Mode Dropdown */
+.mode-dropdown-wrapper {
+  position: relative;
+}
+
+.mode-indicator-dot {
+  width: 9px;
+  height: 9px;
+  background: var(--neon-glow);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--neon-glow);
+}
+
+.dropdown-chevron {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.mode-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 220px;
+  background: var(--hud-bg);
+  border: 1px solid var(--border-medium);
+  border-radius: 10px;
+  backdrop-filter: blur(24px);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.25s ease;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+  z-index: 110;
+}
+
+.mode-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mode-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mode-option:hover, .mode-option.active {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.mode-option.active {
+  border-left: 2px solid var(--neon-glow);
+}
+
+.mode-option .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.dot.green { background: #00ff41; box-shadow: 0 0 6px #00ff41; }
+.dot.red { background: #ff0038; box-shadow: 0 0 6px #ff0038; }
+.dot.blue { background: #00d2ff; box-shadow: 0 0 6px #00d2ff; }
+.dot.yellow { background: #ffbb00; box-shadow: 0 0 6px #ffbb00; }
+.dot.white { background: #059669; box-shadow: 0 0 6px #059669; }
+
+/* Mobile Menu Hamburger */
+.mobile-toggle-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.mobile-toggle-btn span {
+  width: 22px;
+  height: 2px;
+  background: var(--neon-glow);
+  transition: 0.3s;
+}
+
+/* Mobile Drawer */
+.mobile-drawer {
+  display: none;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: var(--hud-bg);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-medium);
+  padding: 1.5rem;
+  z-index: 99;
+  transform: translateY(-100%);
+  transition: transform 0.35s ease;
+}
+.mobile-drawer.open {
+  transform: translateY(0);
+}
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.mobile-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+/* ==========================================================================
+   Section 1: Hero & Omnitrix Simulator
+   ========================================================================== */
+.hero-section {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--neon-glow);
+  box-shadow: 0 0 14px var(--glow-ambient);
+  margin-bottom: 1.25rem;
+}
+
+.pulse-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-glow);
+  box-shadow: 0 0 10px var(--neon-glow);
+  animation: pulseIndicator 1.5s infinite;
+}
+
+@keyframes pulseIndicator {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+.hero-headline {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 1.08;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: 1.8rem;
+}
+
+/* Active Hologram Card */
+.hologram-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: 16px;
+  padding: 1.4rem 1.6rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 0 24px var(--glow-ambient);
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hologram-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+}
+
+.holo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.holo-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--neon-glow);
+  letter-spacing: 0.08em;
+}
+
+.holo-species {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.holo-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.holo-alien-name {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.holo-class {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.holo-quote {
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.holo-stats-bar {
+  display: flex;
+  gap: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.8rem;
+}
+
+.holo-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-name {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stat-value {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--neon-glow);
+}
+
+/* Hero Action Buttons */
+.hero-action-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--accent-gradient);
+  color: #030804;
+  box-shadow: 0 4px 20px var(--glow-shadow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--glow-shadow), 0 0 25px var(--glow-high);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  border-color: var(--neon-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--glow-ambient);
+}
+
+/* ==========================================================================
+   The 3D Interactive Omnitrix Physical Dial
+   ========================================================================== */
+.omnitrix-interactive-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.dial-chassis-wrapper {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dial-ambient-aura {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-ambient) 0%, transparent 70%);
+  filter: blur(25px);
+  pointer-events: none;
+  animation: pulseAura 3s infinite ease-in-out;
+}
+
+@keyframes pulseAura {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.omnitrix-outer-ring {
+  position: relative;
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  background: var(--dial-metallic);
+  border: 4px solid var(--border-medium);
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.8),
+    inset 0 4px 10px rgba(255, 255, 255, 0.1),
+    0 0 30px var(--glow-ambient);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+/* Directional Buttons on Chassis */
+.dial-turn-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  color: var(--neon-glow);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.dial-turn-btn.prev-btn { left: -18px; }
+.dial-turn-btn.next-btn { right: -18px; }
+
+.dial-turn-btn:hover {
+  background: var(--neon-glow);
+  color: #000;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 16px var(--glow-shadow);
+}
+
+/* Rotating Bezel */
+.omnitrix-bezel {
+  position: absolute;
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+  border: 2px dashed var(--border-medium);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+.omnitrix-bezel .stud {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #111;
+  border: 2px solid var(--neon-glow);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--glow-shadow);
+}
+.stud.s-top { top: 6px; left: calc(50% - 7px); }
+.stud.s-right { right: 6px; top: calc(50% - 7px); }
+.stud.s-bottom { bottom: 6px; left: calc(50% - 7px); }
+.stud.s-left { left: 6px; top: calc(50% - 7px); }
+
+/* Elevated Core (The Plunger Faceplate) */
+.omnitrix-core {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--core-glass);
+  border: 4px solid var(--border-bright);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.8),
+    inset 0 0 25px var(--glow-ambient),
+    0 0 25px var(--glow-shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+.omnitrix-core:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 40px var(--glow-high), inset 0 0 35px var(--glow-shadow);
+}
+
+.omnitrix-core:active, .omnitrix-core.slammed {
+  transform: scale(0.92);
+  box-shadow: 0 0 60px var(--neon-glow), inset 0 0 50px var(--neon-glow);
+}
+
+/* Hologram Silhouette Projection */
+.hologram-projection {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.hologram-silhouette {
+  font-size: 3.4rem;
+  filter: drop-shadow(0 0 16px var(--neon-glow));
+  animation: holoFloat 2.5s infinite ease-in-out;
+}
+
+@keyframes holoFloat {
+  0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 12px var(--neon-glow)); }
+  50% { transform: translateY(-6px) scale(1.08); filter: drop-shadow(0 0 24px var(--neon-glow)); }
+}
+
+.hologram-scanline {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 255, 65, 0.15) 51%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Core Hourglass Background */
+.core-hourglass {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  opacity: 0.65;
+  transition: opacity 0.3s ease;
+}
+
+.core-hourglass-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.core-hourglass-svg .hg-top,
+.core-hourglass-svg .hg-bottom {
+  fill: var(--neon-glow);
+}
+
+.core-hourglass-svg .hg-left,
+.core-hourglass-svg .hg-right {
+  fill: #050a06;
+}
+
+.core-hourglass-svg .hg-center {
+  fill: var(--neon-accent);
+}
+
+/* Instructions */
+.dial-instructions {
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.instruct-icon {
+  color: var(--neon-glow);
+}
+
+/* Timeout Badge */
+.timeout-timer-badge {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(220, 38, 38, 0.2);
+  border: 1px solid #ef4444;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #f87171;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.4);
+}
+
+.timeout-timer-badge.active {
+  display: inline-flex;
+  animation: pulseRedAlert 1s infinite alternate;
+}
+
+@keyframes pulseRedAlert {
+  from { opacity: 0.8; }
+  to { opacity: 1; transform: translateX(-50%) scale(1.05); }
+}
+
+.timeout-dot {
+  width: 8px;
+  height: 8px;
+  background: #ef4444;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ef4444;
+}
+
+/* ==========================================================================
+   Section 2: Codon Stream Alien Database
+   ========================================================================== */
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3rem;
+}
+
+.section-tag {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--neon-glow);
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.section-title {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* Filter Row */
+.filter-controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  padding: 0.45rem 0.9rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-chip:hover, .filter-chip.active {
+  background: var(--neon-glow);
+  color: #000;
+  border-color: var(--neon-glow);
+  box-shadow: 0 0 12px var(--glow-shadow);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 8px;
+  padding: 0.45rem 0.9rem;
+  min-width: 280px;
+}
+
+.search-box input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+.search-box input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Alien Grid */
+.alien-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.alien-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 1.5rem;
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.alien-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-bright);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 25px var(--glow-ambient);
+  background: var(--bg-card-hover);
+}
+
+.alien-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.alien-avatar-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  background: var(--dial-metallic);
+  border: 2px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.alien-card:hover .alien-avatar-box {
+  transform: scale(1.1);
+  border-color: var(--neon-glow);
+  box-shadow: 0 0 16px var(--glow-shadow);
+}
+
+.alien-info {
+  flex: 1;
+}
+
+.alien-name {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.alien-species {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.alien-planet {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.alien-powers {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+/* Stat Meters */
+.alien-stat-meters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
+}
+
+.stat-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+}
+
+.stat-bar-label {
+  width: 55px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.stat-bar-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background: var(--accent-gradient);
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+.alien-actions {
+  display: flex;
+  gap: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.9rem;
+}
+
+.alien-btn {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+/* ==========================================================================
+   Section 3: Allies & Rogues Dossier
+   ========================================================================== */
+.dossier-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.dossier-tab {
+  padding: 0.7rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.25s ease;
+}
+
+.dossier-tab:hover, .dossier-tab.active {
+  background: var(--neon-glow);
+  color: #000;
+  border-color: var(--neon-glow);
+  box-shadow: 0 0 16px var(--glow-shadow);
+}
+
+.dossier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.8rem;
+}
+
+.dossier-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 1.5rem;
+  backdrop-filter: blur(14px);
+  transition: all 0.3s ease;
+}
+
+.dossier-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-bright);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--glow-ambient);
+}
+
+.dossier-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dossier-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--dial-metallic);
+  border: 2px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.dossier-name {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.dossier-role {
+  font-size: 0.8rem;
+  color: var(--neon-glow);
+}
+
+.dossier-bio {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 1rem;
+}
+
+.dossier-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.8rem;
+}
+
+.dossier-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Section 4: Galactic Star Map
+   ========================================================================== */
+.starmap-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--glow-ambient);
+}
+
+.planet-selector-bar {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.planet-btn {
+  padding: 0.5rem 1rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.planet-btn:hover, .planet-btn.active {
+  background: var(--neon-glow);
+  color: #000;
+  border-color: var(--neon-glow);
+  box-shadow: 0 0 12px var(--glow-shadow);
+}
+
+.planet-telemetry-display {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.planet-visual-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.planet-sphere {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ff5722 0%, #b71c1c 60%, #000 100%);
+  box-shadow: 0 0 40px rgba(255, 87, 34, 0.5), inset -15px -15px 30px rgba(0, 0, 0, 0.9);
+  transition: all 0.5s ease;
+  overflow: visible;
+}
+
+.planet-atmosphere {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 60%, rgba(255, 87, 34, 0.3) 100%);
+  pointer-events: none;
+}
+
+.planet-status-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.8rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: 9999px;
+  color: var(--neon-glow);
+}
+
+.planet-intel-column .planet-system {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.planet-name {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+
+.planet-overview {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.planet-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.meta-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+.meta-label {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.meta-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Section 5: Tactical Battle Lab (Mini Game)
+   ========================================================================== */
+.battle-arena-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 20px;
+  padding: 2.5rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 35px var(--glow-ambient);
+}
+
+.arena-hud {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.fighter-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.fighter-role {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.fighter-name {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+
+.health-bar-container {
+  width: 100%;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 0.4rem;
+}
+
+.health-bar-fill {
+  height: 100%;
+  transition: width 0.35s ease;
+}
+
+.player-hp {
+  background: linear-gradient(90deg, #10b981, #00ff41);
+  box-shadow: 0 0 10px var(--neon-glow);
+}
+
+.enemy-hp {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  box-shadow: 0 0 10px #ef4444;
+}
+
+.hp-numeric {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.fighter-avatar-box {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: var(--dial-metallic);
+  border: 3px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  position: relative;
+}
+
+.fighter-aura {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  filter: blur(12px);
+  pointer-events: none;
+}
+.player-aura { background: var(--glow-ambient); }
+.enemy-aura { background: rgba(239, 68, 68, 0.25); }
+
+.arena-vs-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vs-text {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--neon-glow);
+  text-shadow: 0 0 15px var(--glow-shadow);
+}
+
+/* Combat Console */
+.combat-console {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.arena-alien-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.selector-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.arena-pill-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.arena-alien-pill {
+  padding: 0.4rem 0.85rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.arena-alien-pill:hover, .arena-alien-pill.active {
+  background: var(--neon-glow);
+  color: #000;
+  border-color: var(--neon-glow);
+  box-shadow: 0 0 12px var(--glow-shadow);
+}
+
+.action-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.battle-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.9rem 1.1rem;
+  border-radius: 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.battle-btn:hover {
+  border-color: var(--neon-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px var(--glow-ambient);
+}
+
+.battle-btn:active {
+  transform: translateY(0);
+}
+
+.btn-subtext {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--neon-glow);
+  margin-bottom: 0.2rem;
+}
+
+.btn-main-action {
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+/* Battle Log */
+.battle-log-feed {
+  background: #020503;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  height: 120px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.82rem;
+}
+
+.log-entry.player { color: var(--neon-glow); }
+.log-entry.enemy { color: #f87171; }
+.log-entry.sys { color: #94a3b8; }
+
+/* ==========================================================================
+   Modals, Flash Overlay & Toasts
+   ========================================================================== */
+.omnitrix-flash-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, var(--neon-glow) 0%, rgba(3, 10, 5, 0.95) 85%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.25s ease-out;
+}
+
+.omnitrix-flash-overlay.active {
+  opacity: 0.88;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-dialog {
+  background: var(--bg-card);
+  border: 1px solid var(--border-bright);
+  border-radius: 20px;
+  max-width: 620px;
+  width: 100%;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 40px var(--glow-ambient);
+  transform: translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-backdrop.open .modal-dialog {
+  transform: translateY(0);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background: var(--neon-glow);
+  color: #000;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1.4rem;
+  background: var(--hud-bg);
+  border: 1px solid var(--border-bright);
+  border-radius: 9999px;
+  backdrop-filter: blur(20px);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px var(--glow-shadow);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, visibility 0.35s;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.toast-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--neon-glow);
+  color: #000;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  box-shadow: 0 0 10px var(--neon-glow);
+}
+
+/* Footer */
+.hud-footer {
+  border-top: 1px solid var(--border-subtle);
+  background: var(--hud-bg);
+  padding: 2.5rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.omnitrix-badge-mini {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--neon-glow);
+  color: #000;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+  .hero-headline { font-size: 2.8rem; }
+  .hero-desc { margin: 0 auto 1.8rem; }
+  .hero-action-row { justify-content: center; }
+  .hologram-card { max-width: 500px; margin: 0 auto 2rem; }
+  .holo-stats-bar { justify-content: center; }
+  .planet-telemetry-display { grid-template-columns: 1fr; text-align: center; }
+  .action-buttons-grid { grid-template-columns: repeat(2, 1fr); }
+  .arena-hud { grid-template-columns: 1fr; gap: 1.5rem; }
+  .arena-vs-divider { transform: rotate(90deg); }
+}
+
+@media (max-width: 768px) {
+  .hud-nav { display: none; }
+  .mobile-toggle-btn { display: flex; }
+  .mobile-drawer { display: block; }
+  .section { padding: 4rem 0; }
+  .section-title { font-size: 2rem; }
+  .hero-headline { font-size: 2.3rem; }
+  .dial-chassis-wrapper { width: 300px; height: 300px; }
+  .omnitrix-outer-ring { width: 280px; height: 280px; }
+  .omnitrix-bezel { width: 220px; height: 220px; }
+  .omnitrix-core { width: 160px; height: 160px; }
+  .action-buttons-grid { grid-template-columns: 1fr; }
+  .footer-content { flex-direction: column; text-align: center; }
+}

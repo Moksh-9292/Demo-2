@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="omnitrix">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omnitrix Command Center — Ben 10 Intergalactic Hub</title>
+  <meta name="description" content="Explore the ultimate interactive Ben 10 universe: Omnitrix transformation simulator, Codon Stream alien archives, galactic star map, and battle simulator.">
+
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Ambience & Starfield Canvas -->
+  <canvas id="starfield" class="starfield-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-glow orb-1" aria-hidden="true"></div>
+  <div class="ambient-glow orb-2" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <!-- Top Omnitrix HUD Navigation Bar -->
+  <header class="hud-header">
+    <div class="header-container">
+      
+      <!-- Brand & Status -->
+      <a href="#hero" class="hud-brand" title="Omnitrix OS Level 10">
+        <div class="omnitrix-logo-icon">
+          <svg viewBox="0 0 100 100" class="logo-svg">
+            <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="6" fill="none"/>
+            <polygon points="26,24 74,24 50,50" fill="currentColor"/>
+            <polygon points="26,76 74,76 50,50" fill="currentColor"/>
+            <polygon points="24,26 24,74 50,50" fill="black"/>
+            <polygon points="76,26 76,74 50,50" fill="black"/>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <span class="brand-title">OMNITRIX <span class="highlight">OS v10.0</span></span>
+          <span class="brand-sub">SECTOR 2814 • EARTH HQ</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hud-nav" aria-label="Main Navigation">
+        <a href="#omnitrix-simulator" class="nav-link active"><span class="nav-idx">01</span> SIMULATOR</a>
+        <a href="#codon-stream" class="nav-link"><span class="nav-idx">02</span> CODON VAULT</a>
+        <a href="#roster-section" class="nav-link"><span class="nav-idx">03</span> DOSSIER</a>
+        <a href="#star-map" class="nav-link"><span class="nav-idx">04</span> STAR MAP</a>
+        <a href="#battle-arena" class="nav-link"><span class="nav-idx">05</span> BATTLE LAB</a>
+      </nav>
+
+      <!-- Right HUD Controls: Omnitrix Mode & Audio Toggle -->
+      <div class="hud-controls">
+        
+        <!-- Sound FX Mute Toggle -->
+        <button id="sfx-toggle" class="control-btn" title="Toggle Omnitrix Sound FX" aria-label="Toggle Sound">
+          <span class="btn-icon sound-icon">🔊</span>
+          <span class="btn-text">SFX</span>
+        </button>
+
+        <!-- Omnitrix Calibration Theme Mode Dropdown / Switcher -->
+        <div class="mode-dropdown-wrapper">
+          <button id="mode-selector-btn" class="control-btn mode-btn" aria-haspopup="true" aria-expanded="false" title="Switch Omnitrix Mode">
+            <span class="mode-indicator-dot"></span>
+            <span class="mode-label" id="current-mode-label">Hero Active</span>
+            <span class="dropdown-chevron">▾</span>
+          </button>
+          
+          <div class="mode-menu" id="mode-menu" role="menu">
+            <button class="mode-option active" data-mode="omnitrix" role="menuitem">
+              <span class="dot green"></span> Ben 10 (Hero Active)
+            </button>
+            <button class="mode-option" data-mode="albedo" role="menuitem">
+              <span class="dot red"></span> Albedo (Ultimatrix Red)
+            </button>
+            <button class="mode-option" data-mode="ben23" role="menuitem">
+              <span class="dot blue"></span> Ben 23 (Hero Watch Blue)
+            </button>
+            <button class="mode-option" data-mode="scan" role="menuitem">
+              <span class="dot yellow"></span> DNA Scanner (Hazard Gold)
+            </button>
+            <button class="mode-option" data-mode="galvan" role="menuitem">
+              <span class="dot white"></span> Azmuth Lab (Clean Tech)
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobile-menu-btn" class="mobile-toggle-btn" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <nav class="mobile-nav">
+      <a href="#omnitrix-simulator" class="mobile-link">01 // Omnitrix Simulator</a>
+      <a href="#codon-stream" class="mobile-link">02 // Codon Stream (Aliens)</a>
+      <a href="#roster-section" class="mobile-link">03 // Plumber Dossier</a>
+      <a href="#star-map" class="mobile-link">04 // Galactic Star Map</a>
+      <a href="#battle-arena" class="mobile-link">05 // Combat Simulation</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- =======================================================================
+         SECTION 1: THE INTERACTIVE OMNITRIX SIMULATOR (HERO)
+         ======================================================================= -->
+    <section class="section hero-section" id="omnitrix-simulator">
+      <div class="container hero-grid">
+        
+        <!-- Left: Hero Text & Status Readout -->
+        <div class="hero-content">
+          <div class="status-pill">
+            <span class="pulse-indicator"></span>
+            <span class="status-title">OMNITRIX MATRIX • CALIBRATION STABLE</span>
+          </div>
+          
+          <h1 class="hero-headline">
+            IT&rsquo;S <span class="neon-text">HERO TIME!</span>
+          </h1>
+          
+          <p class="hero-desc">
+            Direct interface to the level-20 Level Galvan DNA Matrix. Select an alien form from the active playlist, calibrate the dial, and slam down to initiate instant molecular restructuring.
+          </p>
+
+          <!-- Current Hologram Status Display Card -->
+          <div class="hologram-card" id="active-hologram-card">
+            <div class="holo-header">
+              <span class="holo-tag">ACTIVE SELECTION</span>
+              <span class="holo-species" id="holo-species-label">Pyronite</span>
+            </div>
+            <div class="holo-title-row">
+              <h2 class="holo-alien-name" id="holo-alien-name">HEATBLAST</h2>
+              <span class="holo-class" id="holo-class-tag">Class: Pyrokinesis</span>
+            </div>
+            <p class="holo-quote" id="holo-quote">&ldquo;Time to turn up the heat!&rdquo;</p>
+            
+            <div class="holo-stats-bar">
+              <div class="holo-stat">
+                <span class="stat-name">Power</span>
+                <span class="stat-value" id="holo-power">95%</span>
+              </div>
+              <div class="holo-stat">
+                <span class="stat-name">Speed</span>
+                <span class="stat-value" id="holo-speed">82%</span>
+              </div>
+              <div class="holo-stat">
+                <span class="stat-name">Armor</span>
+                <span class="stat-value" id="holo-durability">88%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="hero-action-row">
+            <button class="btn btn-primary" id="slam-omnitrix-btn">
+              <span class="btn-icon">⚡</span>
+              <span class="btn-text">SLAM TO TRANSFORM</span>
+            </button>
+            <button class="btn btn-secondary" id="cycle-next-alien-btn">
+              <span>Next Alien Form</span> ➜
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: The 3D Interactive Omnitrix Physical Dial -->
+        <div class="omnitrix-interactive-stage">
+          <div class="dial-chassis-wrapper" id="dial-chassis">
+            
+            <!-- Outer Glow Aura -->
+            <div class="dial-ambient-aura"></div>
+
+            <!-- Dial Chassis Rings -->
+            <div class="omnitrix-outer-ring">
+              
+              <!-- Directional Dial Buttons -->
+              <button class="dial-turn-btn prev-btn" id="dial-prev" aria-label="Rotate Dial Counter-Clockwise" title="Previous Alien">
+                ◀
+              </button>
+              <button class="dial-turn-btn next-btn" id="dial-next" aria-label="Rotate Dial Clockwise" title="Next Alien">
+                ▶
+              </button>
+
+              <!-- Rotating Bezel Ring with Studs -->
+              <div class="omnitrix-bezel" id="omnitrix-bezel">
+                <span class="stud s-top"></span>
+                <span class="stud s-right"></span>
+                <span class="stud s-bottom"></span>
+                <span class="stud s-left"></span>
+              </div>
+
+              <!-- Elevated Core (The Plunger / Faceplate) -->
+              <div class="omnitrix-core" id="omnitrix-core" role="button" tabindex="0" aria-label="Omnitrix Faceplate: Click to slam and transform">
+                
+                <!-- Core Glowing Rings -->
+                <div class="core-glass"></div>
+                <div class="energy-ripples"></div>
+
+                <!-- Projected Hologram Silhouette -->
+                <div class="hologram-projection" id="hologram-projection">
+                  <div class="hologram-silhouette" id="hologram-silhouette">
+                    🔥
+                  </div>
+                  <div class="hologram-scanline"></div>
+                </div>
+
+                <!-- Hourglass Core Symbol -->
+                <div class="core-hourglass">
+                  <svg viewBox="0 0 100 100" class="core-hourglass-svg">
+                    <polygon class="hg-top" points="26,22 74,22 50,50"/>
+                    <polygon class="hg-bottom" points="26,78 74,78 50,50"/>
+                    <polygon class="hg-left" points="22,26 22,74 50,50"/>
+                    <polygon class="hg-right" points="78,26 78,74 50,50"/>
+                    <circle cx="50" cy="50" r="9" class="hg-center"/>
+                  </svg>
+                </div>
+
+              </div> <!-- /omnitrix-core -->
+
+            </div> <!-- /omnitrix-outer-ring -->
+
+            <!-- Dial Instructions Hint -->
+            <div class="dial-instructions">
+              <span class="instruct-icon">✦</span>
+              <span>Click the core or press &ldquo;SLAM&rdquo; to transform • Use arrows to cycle DNA</span>
+            </div>
+
+            <!-- Transformation Countdown Timer (Appears during transformation) -->
+            <div class="timeout-timer-badge" id="timeout-timer" aria-live="polite">
+              <span class="timeout-dot"></span>
+              <span class="timeout-text" id="timeout-timer-text">OMNITRIX TIMEOUT IN: 15s</span>
+            </div>
+
+          </div> <!-- /dial-chassis-wrapper -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 2: CODON STREAM ARCHIVE (ALIEN DATABASE)
+         ======================================================================= -->
+    <section class="section codon-section" id="codon-stream">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-tag">ARCHIVAL CODEX</div>
+          <h2 class="section-title">THE CODON <span class="neon-text">STREAM</span></h2>
+          <p class="section-desc">
+            Direct telemetry from Primus. Browse 10,000+ cataloged alien species, analyze their biometrics, tactical combat affinities, and select any form for instant Omnitrix calibration.
+          </p>
+        </div>
+
+        <!-- Filter & Search Controls -->
+        <div class="filter-controls-row">
+          <div class="filter-chips" role="tablist" aria-label="Alien categories">
+            <button class="filter-chip active" data-filter="all">All Species</button>
+            <button class="filter-chip" data-filter="original10">Original 10</button>
+            <button class="filter-chip" data-filter="heavy">Heavy Hitters</button>
+            <button class="filter-chip" data-filter="speed">Speed &amp; Agility</button>
+            <button class="filter-chip" data-filter="cosmic">Cosmic &amp; Energy</button>
+          </div>
+
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="alien-search-input" placeholder="Search species, powers, homeplanet..." aria-label="Search Alien Roster">
+          </div>
+        </div>
+
+        <!-- Alien Cards Grid -->
+        <div class="alien-grid" id="alien-grid">
+          <!-- Dynamically populated via JavaScript for high fidelity and zero clutter -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 3: PLUMBER & ROGUES DOSSIER (CHARACTERS)
+         ======================================================================= -->
+    <section class="section dossier-section" id="roster-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-tag">INTERGALACTIC INTELLIGENCE</div>
+          <h2 class="section-title">ALLIES &amp; <span class="neon-text">ADVERSARIES</span></h2>
+          <p class="section-desc">
+            Classified Plumber files on key operatives safeguarding Sector 2814 and the highest-priority universal threats.
+          </p>
+        </div>
+
+        <!-- Category Tab Buttons: Plumbers vs Rogues -->
+        <div class="dossier-tabs" role="tablist">
+          <button class="dossier-tab active" id="tab-allies" role="tab" aria-selected="true">
+            <span class="tab-icon">🛡️</span> Plumber Command &amp; Allies
+          </button>
+          <button class="dossier-tab" id="tab-villains" role="tab" aria-selected="false">
+            <span class="tab-icon">☠️</span> Galactic Rogues Gallery
+          </button>
+        </div>
+
+        <!-- Characters Cards Grid -->
+        <div class="dossier-grid" id="dossier-grid">
+          <!-- Populated dynamically via script.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 4: GALACTIC STAR MAP (PLANETARY EXPLORER)
+         ======================================================================= -->
+    <section class="section starmap-section" id="star-map">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-tag">CELESTIAL CARTOGRAPHY</div>
+          <h2 class="section-title">INTERGALACTIC <span class="neon-text">STAR MAP</span></h2>
+          <p class="section-desc">
+            Explore native homeworlds of the Omnitrix DNA archives. Click on any planetary coordinate to review environmental hazard ratings and demographic intel.
+          </p>
+        </div>
+
+        <div class="starmap-container">
+          
+          <!-- Planet Selector Orbit Bar -->
+          <div class="planet-selector-bar" id="planet-selector">
+            <!-- Buttons populated via JavaScript -->
+          </div>
+
+          <!-- Active Planet Telemetry Card -->
+          <div class="planet-telemetry-display" id="planet-display">
+            <div class="planet-visual-column">
+              <div class="planet-sphere" id="planet-sphere">
+                <div class="planet-atmosphere"></div>
+                <div class="planet-surface" id="planet-surface"></div>
+                <div class="planet-ring" id="planet-ring"></div>
+              </div>
+              <div class="planet-status-badge" id="planet-hazard-badge">Hazard Level: Moderate</div>
+            </div>
+
+            <div class="planet-intel-column">
+              <div class="planet-header">
+                <span class="planet-system" id="planet-system">System: Pyros Galaxy</span>
+                <h3 class="planet-name" id="planet-name">PYROS</h3>
+              </div>
+              <p class="planet-overview" id="planet-overview">
+                A blazing superheated star-planet composed of semi-solid volcanic rock and magma oceans. Inhabited by Pyronites who harness thermal plasma.
+              </p>
+              
+              <div class="planet-meta-grid">
+                <div class="meta-item">
+                  <span class="meta-label">Native Species</span>
+                  <span class="meta-val" id="planet-species">Pyronite (Heatblast)</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Sector Coordinate</span>
+                  <span class="meta-val" id="planet-sector">Sector 44-B</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Atmosphere</span>
+                  <span class="meta-val" id="planet-atmo">Plasma &amp; Sulfur</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Plumber Base</span>
+                  <span class="meta-val" id="planet-base">Outpost 91</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 5: GALACTIC BATTLE SIMULATOR (PLAYABLE LAB)
+         ======================================================================= -->
+    <section class="section arena-section" id="battle-arena">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-tag">TACTICAL COMBAT MATRIX</div>
+          <h2 class="section-title">OMNITRIX <span class="neon-text">BATTLE LAB</span></h2>
+          <p class="section-desc">
+            Test combat affinities against Vilgaxian Drones and boss threats. Choose your transformation form and execute tactical strikes!
+          </p>
+        </div>
+
+        <div class="battle-arena-wrapper">
+          
+          <!-- Combat Arena HUD -->
+          <div class="arena-hud">
+            
+            <!-- Player Fighter Side -->
+            <div class="fighter-card player-fighter" id="player-fighter-card">
+              <div class="fighter-header">
+                <span class="fighter-role">OMNITRIX HERO</span>
+                <h3 class="fighter-name" id="player-fighter-name">FOUR ARMS</h3>
+              </div>
+
+              <!-- Health Bar -->
+              <div class="health-bar-container">
+                <div class="health-bar-fill player-hp" id="player-hp-bar" style="width: 100%;"></div>
+              </div>
+              <div class="hp-numeric" id="player-hp-text">100 / 100 HP</div>
+
+              <!-- Fighter Visual Aura -->
+              <div class="fighter-avatar-box">
+                <div class="fighter-emoji" id="player-fighter-emoji">🥊</div>
+                <div class="fighter-aura player-aura"></div>
+              </div>
+            </div>
+
+            <!-- VS Badge -->
+            <div class="arena-vs-divider">
+              <span class="vs-text">VS</span>
+            </div>
+
+            <!-- Enemy Boss Side -->
+            <div class="fighter-card enemy-fighter" id="enemy-fighter-card">
+              <div class="fighter-header">
+                <span class="fighter-role">INTERGALACTIC THREAT</span>
+                <h3 class="fighter-name" id="enemy-fighter-name">VILGAX WAR DRONE</h3>
+              </div>
+
+              <!-- Health Bar -->
+              <div class="health-bar-container">
+                <div class="health-bar-fill enemy-hp" id="enemy-hp-bar" style="width: 100%;"></div>
+              </div>
+              <div class="hp-numeric" id="enemy-hp-text">120 / 120 HP</div>
+
+              <!-- Enemy Visual Aura -->
+              <div class="fighter-avatar-box">
+                <div class="fighter-emoji" id="enemy-fighter-emoji">🤖</div>
+                <div class="fighter-aura enemy-aura"></div>
+              </div>
+            </div>
+
+          </div> <!-- /arena-hud -->
+
+          <!-- Combat Action Console -->
+          <div class="combat-console">
+            
+            <!-- Hero Selection Selector for Arena -->
+            <div class="arena-alien-selector">
+              <span class="selector-label">Change Alien Form:</span>
+              <div class="arena-pill-group">
+                <button class="arena-alien-pill active" data-alien="Four Arms">Four Arms 🥊</button>
+                <button class="arena-alien-pill" data-alien="Heatblast">Heatblast 🔥</button>
+                <button class="arena-alien-pill" data-alien="XLR8">XLR8 ⚡</button>
+                <button class="arena-alien-pill" data-alien="Diamondhead">Diamondhead 💎</button>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons-grid">
+              <button class="battle-btn attack-btn" id="btn-attack">
+                <span class="btn-subtext">Action 1</span>
+                <span class="btn-main-action" id="action-1-text">Heavy Jab (20 DMG)</span>
+              </button>
+              <button class="battle-btn special-btn" id="btn-special">
+                <span class="btn-subtext">Special Affinity</span>
+                <span class="btn-main-action" id="action-2-text">Sonic Shockwave (38 DMG)</span>
+              </button>
+              <button class="battle-btn defend-btn" id="btn-defend">
+                <span class="btn-subtext">Tactical Guard</span>
+                <span class="btn-main-action">Reinforce Armor (-60% Next Hit)</span>
+              </button>
+              <button class="battle-btn reset-btn" id="btn-reset-battle">
+                <span class="btn-subtext">Simulation Control</span>
+                <span class="btn-main-action">Reset Arena ↺</span>
+              </button>
+            </div>
+
+            <!-- Combat Battle Log -->
+            <div class="battle-log-feed" id="battle-log">
+              <div class="log-entry sys">> Simulation online. Choose your action to attack the Vilgax War Drone.</div>
+            </div>
+
+          </div> <!-- /combat-console -->
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Omnitrix Global Flash Effect for Transformation -->
+  <div class="omnitrix-flash-overlay" id="flash-overlay" aria-hidden="true"></div>
+
+  <!-- Alien Details Modal -->
+  <div class="modal-backdrop" id="alien-modal-backdrop" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-alien-title">
+      <button class="modal-close-btn" id="modal-close" aria-label="Close Alien Dossier">✕</button>
+      
+      <div class="modal-body" id="modal-body-content">
+        <!-- Injected via script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Box -->
+  <div class="toast" id="toast" role="alert" aria-live="polite">
+    <div class="toast-icon" id="toast-icon">⚡</div>
+    <div class="toast-message" id="toast-message">Omnitrix online</div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="hud-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="omnitrix-badge-mini">10</span>
+        <span>Omnitrix Intergalactic Command Center • Azmuth Galvan Tech</span>
+      </div>
+      <p class="footer-copy">
+        Crafted with pure HTML, CSS &amp; JavaScript. Inspired by Man of Action&rsquo;s Ben 10 universe.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
